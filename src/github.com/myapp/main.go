@@ -27,9 +27,10 @@ func main() {
 
 	startTime := time.Now()
 	files, _ := ioutil.ReadDir(DUMP_DIR)
-	words := make(map[string]int)
+	index := make(map[string]int)
+
 	for _, f := range files {
-		countWords(f, words)
+		countWords(f, index)
 	}
 	fmt.Println("All wikipedia articles indexed in : ", time.Since(startTime))
 
@@ -38,10 +39,10 @@ func main() {
 		fmt.Print("Type a word and press RETURN : ")
 		word, _ := reader.ReadString('\n')
 		word = strings.Replace(word, "\n", "", -1)
-		if words[word] == 0 {
+		if index[word] == 0 {
 			fmt.Println("No occurence found")
 		} else {
-			fmt.Println("Found ", words[word], " occurence(s)")
+			fmt.Println("Found ", index[word], " occurence(s)")
 		}
 	}
 }
