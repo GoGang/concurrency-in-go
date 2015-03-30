@@ -27,21 +27,11 @@ func main() {
 
 	startTime := time.Now()
 	files, _ := ioutil.ReadDir(DUMP_DIR)
-
 	words := make(map[string]int)
-	numOfDocs := 0
 	for _, f := range files {
-		fmt.Println(DUMP_DIR + f.Name())
-		file, _ := os.Open(DUMP_DIR + f.Name())
-		lines := bufio.NewScanner(file)
-		for lines.Scan() {
-			numOfDocs++
-			for _, w := range strings.Fields(lines.Text()) {
-				words[w]++
-			}
-		}
+		countWords(f, words)
 	}
-	fmt.Println(numOfDocs, "wikipedia articles indexed in : ", time.Since(startTime))
+	fmt.Println("All wikipedia articles indexed in : ", time.Since(startTime))
 
 	reader := bufio.NewReader(os.Stdin)
 	for {
@@ -54,5 +44,15 @@ func main() {
 			fmt.Println("Found ", words[word], " occurence(s)")
 		}
 	}
+}
 
+func countWords(f os.FileInfo, words map[string]int) {
+	fmt.Println(DUMP_DIR + f.Name())
+	file, _ := os.Open(DUMP_DIR + f.Name())
+	lines := bufio.NewScanner(file)
+	for lines.Scan() {
+		for _, w := range strings.Fields(lines.Text()) {
+			words[w]++
+		}
+	}
 }
