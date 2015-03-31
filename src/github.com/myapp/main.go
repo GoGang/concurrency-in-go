@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
-	"sync"
 	"time"
 )
 
@@ -25,24 +24,28 @@ func main() {
 	files, _ := ioutil.ReadDir(DUMP_DIR)
 	index := make(map[string]int)
 
-	wordsChannel := make(chan string)
-	wg := sync.WaitGroup{}
-	wg.Add(len(files))
+	maps := make(chan map[string]int)
 
-	// Start counter
-	go func(wc chan string) {
-		for {
-			index[<-wc]++
+	/**** Reduce (wait for incoming maps) ****/
+	go func(maps chan map[string]int) {
+		fmt.Println("ffsdfds")
+		for i := 0; ; i++ {
+			comingMap := <-maps
+			fmt.Println(i, "map received")
+			for k, v := range comingMap {
+				index[k] = index[k] + v
+			}
 		}
-	}(wordsChannel)
+	}(maps)
 
-	// Start readers
+	/**** Map ****/
 	for _, f := range files {
-		go countWords(f, wordsChannel, wg)
+		go countWords(f, maps)
 	}
 
 	fmt.Println("All wikipedia articles indexed in : ", time.Since(startTime))
 
+	// Prompt
 	reader := bufio.NewReader(os.Stdin)
 	for {
 		fmt.Print("Type a word and press RETURN : ")
@@ -56,14 +59,18 @@ func main() {
 	}
 }
 
-func countWords(f os.FileInfo, wc chan string, wg sync.WaitGroup) {
-	fmt.Println(DUMP_DIR + f.Name())
+func countWords(f os.FileInfo, maps chan map[string]int) {
+	//fmt.Println(DUMP_DIR + f.Name())
+	words := make(map[string]int)
+
 	file, _ := os.Open(DUMP_DIR + f.Name())
 	lines := bufio.NewScanner(file)
 	for lines.Scan() {
 		for _, w := range strings.Fields(lines.Text()) {
-			wc <- w
+			words[w]++
 		}
 	}
-	wg.Done()
+	//fmt.Println("Traitment for file", f.Name(), "is finishedr")
+	maps <- words
+	fmt.Println(f.Name(), "SENT")
 }
