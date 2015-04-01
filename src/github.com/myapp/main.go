@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -26,6 +27,8 @@ func main() {
 
 	maps := make(chan map[string]int)
 
+	wg := sync.WaitGroup{}
+
 	/**** Reduce (wait for incoming maps) ****/
 	go func(maps chan map[string]int) {
 		fmt.Println("ffsdfds")
@@ -40,8 +43,11 @@ func main() {
 
 	/**** Map ****/
 	for _, f := range files {
-		go countWords(f, maps)
+		wg.Add(1)
+		go countWords(f, maps, &wg)
 	}
+
+	wg.Wait()
 
 	fmt.Println("All wikipedia articles indexed in : ", time.Since(startTime))
 
@@ -59,8 +65,8 @@ func main() {
 	}
 }
 
-func countWords(f os.FileInfo, maps chan map[string]int) {
-	//fmt.Println(DUMP_DIR + f.Name())
+func countWords(f os.FileInfo, maps chan map[string]int, wg *sync.WaitGroup) {
+	fmt.Println("Start worker for file : " + DUMP_DIR + f.Name())
 	words := make(map[string]int)
 
 	file, _ := os.Open(DUMP_DIR + f.Name())
@@ -72,5 +78,6 @@ func countWords(f os.FileInfo, maps chan map[string]int) {
 	}
 	//fmt.Println("Traitment for file", f.Name(), "is finishedr")
 	maps <- words
-	fmt.Println(f.Name(), "SENT")
+	wg.Done()
+	//fmt.Println(f.Name(), "SENT")
 }
