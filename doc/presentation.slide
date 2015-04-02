@@ -1,0 +1,31 @@
+Concurrency in Go
+17 April 2015
+
+Benjamin Chenebault & Jacques Antoine Massé
+Orange, Inc.
+
+
+* Presentation
+
+- Qui sommes nous ?
+- Le Gopher, cet étrange animal
+- La concurrence n'est pas du parallélisme
+- Un tour de Go en 5 minutes
+- Live coding
+- Questions
+
+Vous n'êtes pas au bon endroit si
+
+- Vous pensiez venir mater le film de brockback mountain
+
+* Qui nous sommes ?
+
+
+* Le gopher, cet étrange animal
+
+- Practical, not academic.
+- Statically typed, but designed to not feel like it.
+- Garbage collected.
+- Quick to compile, runs quick.
+- Support concurrent programming (ala CSP).
+
