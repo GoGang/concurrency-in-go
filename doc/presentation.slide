@@ -4,28 +4,104 @@ Concurrency in Go
 Benjamin Chenebault & Jacques Antoine Massé
 Orange, Inc.
 
-
-* Presentation
+* Sommaire
 
 - Qui sommes nous ?
-- Le Gopher, cet étrange animal
 - La concurrence n'est pas du parallélisme
-- Un tour de Go en 5 minutes
-- Live coding
-- Questions
+- Un tour de Go en 5 slides
+- 10' Live coding
 
-Vous n'êtes pas au bon endroit si
+* Qui sommes nous ?
 
-- Vous pensiez venir mater le film de brockback mountain
+* Qui sommes nous ?
 
-* Qui nous sommes ?
+Deux types qui font du développement
+
+- Issus du monde Java,
+- Spécialisés dans la conception de plateformes haute disponibilité,
+- Noyés dans des problématiques de programmation concurrente,
+- Et des problématiques de flux réseau... 
+
+* Sur quoi on bossent la journée ?
+
+.image xms.jpg _ 700
+
+- ~ 30 applis en production
+- Java, C, Perl
+- 10 dev, 3 ops
+- 400 clients
+- 900 millions de messages/an
+
+* Pourquoi on s'est intéressés à Go ?
+
+Java c'est très rapide, gratuit et portable
+
+Sauf que,
+- Un morceau de Java qui s'est fait passé dessus par 30 personnes c'est moche
+- Les projets deviennet se transforment en concours d'agrégat de design patterns
+- Problématiques d'accès concurrents compliquées à adresser en Java
+- Avec le temps va, toute la doc s'en va...
+
+* La concurrence, c'est pas du parallélisme
+
+* TODO
+
+* Un tour de Go en 5 slides
+
+* Cf Wikipedia
+
+V1.0 sortie en mars 2012
+
+Créé par R.Pike, K.Thompson, R. Griesemer
+
+Procédural, un peu objet, un peu fonctionnel
+
+Garbage collecté
+
+Compilé
+
+Typage fort, statique
+
+Orienté concurrence
+
+Open source
+
+* Les channels
+
+- Primitive du langage 
+- File FIFO
+- Très largement utilisée pour gérer la concurrence et les attentes de thread
+- `select` permet de "poller" plusieurs channels
+
+* Les goroutines
+
+Exécution d'un appel de fonction en concurrence
+
+- Mot clé `go`
+- Primitive du langage
+- Faible occupation mémoire (~4ko/goroutine)
+- Task switching peu significatif
+- Multiplexé sur un ou plusieurs threads de l'OS
+
+* Les goroutines
+
+.code goroutine.go
+
+* 10' live coding
+
+* MapReduce
+
+Comment indexer le contenu de Wikipedia avec 30 lignes de code ?
+
+.image mapreduce.png _ 700
+
+* Questions ?
+
+* Pour les timides
+
+- Twitter : @BenC__ , @morphocapics
+- Gmail : benjamin.chenebault@gmail.com, jacquesantoine.masse@gmail.com 
+- Retour d'expérience sur Go : https://github.com/GoGang/RetourDExperience
 
 
-* Le gopher, cet étrange animal
-
-- Practical, not academic.
-- Statically typed, but designed to not feel like it.
-- Garbage collected.
-- Quick to compile, runs quick.
-- Support concurrent programming (ala CSP).
 
