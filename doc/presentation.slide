@@ -1,8 +1,8 @@
 Concurrency in Go
-17 April 2015
+27 Mai 2015
 
 Benjamin Chenebault & Jacques Antoine Massé
-Orange, Inc.
+Orange Applications for Business
 
 * Sommaire
 
@@ -22,7 +22,7 @@ Deux types qui font du développement
 - Noyés dans des problématiques de programmation concurrente,
 - Et des problématiques de flux réseau... 
 
-* Sur quoi on bossent la journée ?
+* Sur quoi on bosse la journée ?
 
 .image xms.jpg _ 700
 
@@ -34,37 +34,69 @@ Deux types qui font du développement
 
 * Pourquoi on s'est intéressés à Go ?
 
-Java c'est très rapide, gratuit et portable
+- Java c'est très rapide, gratuit et portable
 
-Sauf que,
-- Un morceau de Java qui s'est fait passé dessus par 30 personnes c'est moche
+Sauf que:
+- Un morceau de Java qui s'est fait passer dessus par 30 personnes c'est moche
 - Les projets deviennet se transforment en concours d'agrégat de design patterns
 - Problématiques d'accès concurrents compliquées à adresser en Java
 - Avec le temps va, toute la doc s'en va...
 
+- Bref, on a cherché quelque chose de mieux (pour nous).
+
 * La concurrence, c'est pas du parallélisme
 
-* TODO
+* Concurrence != parallélisme
+
+- Concurrence : Conception de programmes comme un ensemble processus s'exécutant indépendamment. C'est du design.
+
+- Parallélisme : Excution de processus simultanés. C'est une question d'architecture de machine.
+
+* Exemple : indexation de titres de pages wikipedia
+
+- Non concurrent, non parallèle
+
+.image concurrence1.png _ 700
+
+* Exemple : indexation de titres de pages wikipedia
+
+- Concurrent ? Parallèle ?
+
+.image concurrence2.png _ 900
+
+* Exemple : indexation de titres de pages wikipedia
+
+- Concurrent ? Parallèle ?
+
+.image concurrence3.png _ 800
+
+* Conception concurrente
+
+- Paradigme : analogue à l'objet, au fonctionnel
+- Permet de décomposer un problème en sous-parties
+- Pas des objets, pas des fonctions, pas des procédures
+- Les sous-parties peuvent fonctionner en concurrence…
+- … et potentiellement en parallèle
+
+* Conception concurrente
+
+- Scalable 
+- "Simple"
+- Rapide
+- Maintenable
 
 * Un tour de Go en 5 slides
 
 * Cf Wikipedia
 
-V1.0 sortie en mars 2012
-
-Créé par R.Pike, K.Thompson, R. Griesemer
-
-Procédural, un peu objet, un peu fonctionnel
-
-Garbage collecté
-
-Compilé
-
-Typage fort, statique
-
-Orienté concurrence
-
-Open source
+- V1.0 sortie en mars 2012
+- Créé par R.Pike, K.Thompson, R. Griesemer
+- Procédural, un peu objet, un peu fonctionnel
+- Garbage collecté
+- Compilé
+- Typage fort, statique
+- Orienté concurrence
+- Open source
 
 * Les channels
 
@@ -85,7 +117,7 @@ Exécution d'un appel de fonction en concurrence
 
 * Les goroutines
 
-.code goroutine.go
+.code -numbers goroutine.go
 
 * 10' live coding
 
