@@ -7,20 +7,20 @@ Orange Applications for Business
 * Sommaire
 
 - Qui sommes nous ?
-- La concurrence n'est pas du parallélisme
-- Un tour de Go en 5 slides
+- La concurrence c'est pas du parallélisme
+- Un tour de Go en 5 slides (à peine)
 - 10' Live coding
 
 * Qui sommes nous ?
 
 * Qui sommes nous ?
 
-Deux types qui font du développement
+Deux développeurs bordelais,
 
 - Issus du monde Java,
 - Spécialisés dans la conception de plateformes haute disponibilité,
 - Noyés dans des problématiques de programmation concurrente,
-- Et des problématiques de flux réseau... 
+- Et bercés quotidiennement dans des problémes de flux réseau... 
 
 * Sur quoi on bosse la journée ?
 
@@ -37,34 +37,34 @@ Deux types qui font du développement
 - Java c'est très rapide, gratuit et portable
 
 Sauf que:
-- Un morceau de Java qui s'est fait passer dessus par 30 personnes c'est moche
-- Les projets deviennet se transforment en concours d'agrégat de design patterns
-- Problématiques d'accès concurrents compliquées à adresser en Java
+- Un morceau de Java qui s'est fait passer dessus par 30 personnes, c'est moche
+- Les projets se transforment en concours d'agrégat de design patterns
+- Les problématiques d'accès concurrents c'est pas trivial en Java
 - Avec le temps va, toute la doc s'en va...
 
 - Bref, on a cherché quelque chose de mieux (pour nous).
 
 * La concurrence, c'est pas du parallélisme
 
-* Concurrence != parallélisme
+* Concurrence != Parallélisme
 
 - Concurrence : Conception de programmes comme un ensemble processus s'exécutant indépendamment. C'est du design.
 
-- Parallélisme : Excution de processus simultanés. C'est une question d'architecture de machine.
+- Parallélisme : Exécution de processus simultanés. C'est une question d'architecture de machine, sur une machine monocoeur, on peut pas paralléliser.
 
-* Exemple : indexation de titres de pages wikipedia
+* Exemple : Indexation des titres de pages wikipedia en
 
 - Non concurrent, non parallèle
 
 .image concurrence1.png _ 700
 
-* Exemple : indexation de titres de pages wikipedia
+* Exemple : Indexation des titres de pages wikipedia en
 
 - Concurrent ? Parallèle ?
 
 .image concurrence2.png _ 900
 
-* Exemple : indexation de titres de pages wikipedia
+* Exemple : Indexation des titres de pages wikipedia en
 
 - Concurrent ? Parallèle ?
 
@@ -72,10 +72,11 @@ Sauf que:
 
 * Conception concurrente
 
-- Paradigme : analogue à l'objet, au fonctionnel
-- Permet de décomposer un problème en sous-parties
-- Pas des objets, pas des fonctions, pas des procédures
-- Les sous-parties peuvent fonctionner en concurrence…
+- Paradigme : Analogue à l'objet, au fonctionnel
+- Consiste à décomposer un système complexe en sous-systèmes plus simples
+- On ne parle pas d'objets, ni de fonctions, ni de procédures
+
+- Ces sous-systèmes peuvent fonctionner en concurrence…
 - … et potentiellement en parallèle
 
 * Conception concurrente
@@ -131,7 +132,7 @@ Comment indexer le contenu de Wikipedia avec 30 lignes de code ?
 
 * Pour les timides
 
-- Twitter : @BenC__ , @morphocapics
+- Twitter : @TheBenC_ , @morphocapics
 - Gmail : benjamin.chenebault@gmail.com, jacquesantoine.masse@gmail.com 
 - Retour d'expérience sur Go : https://github.com/GoGang/RetourDExperience
 
