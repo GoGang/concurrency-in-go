@@ -78,12 +78,21 @@ Sauf que:
 - Les sous-parties peuvent fonctionner en concurrence…
 - … et potentiellement en parallèle
 
+- Bref : pas une conception objet ou fonctionnelle sur laquelle on plaque des mutexes
+
 * Conception concurrente
 
 - Scalable 
 - "Simple"
 - Rapide
 - Maintenable
+
+* Conception concurrente
+
+- Partager de l'information en communiquant
+- et non communiquer en partageant de l'information
+
+- Nécessité de processus et communication interprocessus comme objets de base du langage
 
 * Un tour de Go en 5 slides
 
