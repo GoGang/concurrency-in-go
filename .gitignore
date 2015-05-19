@@ -1,3 +1,6 @@
+bin/
+src/github.com/myapp/myapp
+
 # Mac OS files
 .DS_Store
 *~

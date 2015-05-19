@@ -9,15 +9,7 @@ import (
 	"time"
 )
 
-const (
-	DUMP_DIR = "/home/bchenebault/DEV/github/wordCounter/wikipedia-articles/"
-	WORD     = "Theory"
-)
-
-type WordCount struct {
-	word     string
-	numOfOcc int
-}
+const DUMP_DIR = "/Users/benjaminchenebault/DEV/github.com/concurrency-in-go/wikipedia-articles/"
 
 /*
   Count words occurences in wikipedia dump
