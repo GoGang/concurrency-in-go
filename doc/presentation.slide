@@ -1,17 +1,17 @@
 Concurrency in Go
-27 Mai 2015
+28 Mai 2015
 
 Benjamin Chenebault & Jacques Antoine Massé
 Orange Applications for Business
 
 * Sommaire
 
-- Qui sommes nous ?
+- Quelques mots
 - La concurrence c'est pas du parallélisme
-- Un tour de Go en 5 slides (à peine)
+- Golang en 5 slides (à peine)
 - 10' Live coding
 
-* Qui sommes nous ?
+* Quelques mots
 
 * Qui sommes nous ?
 
@@ -20,29 +20,17 @@ Deux développeurs bordelais,
 - Issus du monde Java,
 - Spécialisés dans la conception de plateformes haute disponibilité,
 - Noyés dans des problématiques de programmation concurrente,
-- Et bercés quotidiennement dans des problémes de flux réseau... 
+- Et bercés au quotidien dans des problémes de flux réseau... 
 
-* Sur quoi on bosse la journée ?
+* Moore or not Moore
 
-.image xms.jpg _ 700
+.image moore.jpg _ 500
 
-- ~ 30 applis en production
-- Java, C, Perl
-- 10 dev, 3 ops
-- 400 clients
-- 900 millions de messages/an
+* Ok, et alors ?
 
-* Pourquoi on s'est intéressés à Go ?
+.image thread.jpg _ 300
 
-- Java c'est très rapide, gratuit et portable
-
-Sauf que:
-- Un morceau de Java qui s'est fait passer dessus par 30 personnes, c'est moche
-- Les projets se transforment en concours d'agrégat de design patterns
-- Les problématiques d'accès concurrents c'est pas trivial en Java
-- Avec le temps va, toute la doc s'en va...
-
-- Bref, on a cherché quelque chose de mieux (pour nous).
+.image monkey.jpg _ 200
 
 * La concurrence, c'est pas du parallélisme
 
@@ -136,6 +124,11 @@ Exécution d'un appel de fonction en concurrence
 Comment indexer le contenu de Wikipedia avec 30 lignes de code ?
 
 .image mapreduce.png _ 700
+
+* Références
+
+.image book1.jpg _ 200
+.image book2.jpg _ 200
 
 * Questions ?
 

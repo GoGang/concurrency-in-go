@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-const DUMP_DIR = "/Users/benjaminchenebault/DEV/github.com/concurrency-in-go/wikipedia-articles/"
+const DUMP_DIR = "/home/bchenebault/wikipedia-articles/"
 
 /*
   Count words occurences in wikipedia dump
