@@ -16,7 +16,7 @@ const DUMP_DIR = "/home/bchenebault/wikipedia-articles/"
   Count words occurences in wikipedia dump
 */
 func main() {
-	runtime.GOMAXPROCS(1)
+	runtime.GOMAXPROCS(4)
 
 	// Load wikipedia in memory
 	fmt.Println("Loading content in memory")
@@ -37,7 +37,7 @@ func main() {
 	channel := make(chan map[string]int, 100)
 
 	for name, content := range inmemory {
-		fmt.Println("Start worker for file", name)
+		fmt.Println("New worker starts on" + name)
 		go countWords(content, channel)
 	}
 
