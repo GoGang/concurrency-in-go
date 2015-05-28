@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"runtime"
 	"strings"
 	"time"
 )
@@ -15,6 +16,8 @@ const DUMP_DIR = "/home/bchenebault/wikipedia-articles/"
   Count words occurences in wikipedia dump
 */
 func main() {
+	runtime.GOMAXPROCS(4)
+
 	fmt.Println("Start indexing wikipedia dump")
 
 	startTime := time.Now()
