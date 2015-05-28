@@ -60,28 +60,20 @@ Deux développeurs bordelais,
 
 * Conception concurrente
 
-- Paradigme : Analogue à l'objet, au fonctionnel
+- Paradigme de programmation
 - Consiste à décomposer un système complexe en sous-systèmes plus simples
-- On ne parle pas d'objets, ni de fonctions, ni de procédures
+- On ne parle pas d'objets, ni de fonctions, ni de procédures, mais de processus
 
 - Ces sous-systèmes peuvent fonctionner en concurrence…
 - … et potentiellement en parallèle
 
-- Bref : pas une conception objet ou fonctionnelle sur laquelle on plaque des mutexes
+* Thread et locks
 
-* Conception concurrente
+.image sharedmemory.png _ 800
 
-- Scalable 
-- "Simple"
-- Rapide
-- Maintenable
+* Passage de message
 
-* Conception concurrente
-
-- Partager de l'information en communiquant
-- et non communiquer en partageant de l'information
-
-- Nécessité de processus et communication interprocessus comme objets de base du langage
+.image messagepassing.png _ 800
 
 * Un tour de Go en 5 slides
 
@@ -98,24 +90,30 @@ Deux développeurs bordelais,
 
 * Les channels
 
+- "Network"
 - Primitive du langage 
 - File FIFO
-- Très largement utilisée pour gérer la concurrence et les attentes de thread
+- Assure la communication inter process
 - `select` permet de "poller" plusieurs channels
 
 * Les goroutines
 
-Exécution d'un appel de fonction en concurrence
-
+- "Processor"
+- Exécution d'un appel de fonction dans un processus dédié
 - Mot clé `go`
 - Primitive du langage
 - Faible occupation mémoire (~4ko/goroutine)
 - Task switching peu significatif
 - Multiplexé sur un ou plusieurs threads de l'OS
 
-* Les goroutines
+* Du code
 
-.code -numbers goroutine.go
+.code -edit -numbers goroutine.go /^func producer/,/^}/
+.code -edit -numbers goroutine.go /^func consumer/,/^}/
+
+* Du code
+
+.play goroutine.go /^func main/,/^}/
 
 * 10' live coding
 
