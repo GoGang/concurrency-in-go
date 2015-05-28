@@ -75,6 +75,8 @@ Deux développeurs bordelais,
 
 .image messagepassing.png _ 800
 
+Patterns : Pipelines, fan in/out, timeout, pub/sub,…
+
 * Un tour de Go en 5 slides
 
 * Cf Wikipedia
