@@ -77,6 +77,40 @@ Deux développeurs bordelais,
 
 Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
+* Cœurs et goroutines
+
+.image images/gomodel.png _ 600
+
+* Cœurs et goroutines
+
+.image images/gomodel2.png _ 450
+
+* Cœurs et goroutines
+
+.image images/gomodel3.png _ 700
+
+* Traçage du scheduler 
+
+.code code/schedule.go /^const/,/^}/
+
+go build schedule.go && GODEBUG=schedtrace=10 ./schedule -cores 4
+
+* Traçage du scheduler 
+
+     SCHED 0ms: gomaxprocs=1 idleprocs=0 threads=2 spinningthreads=0 idlethreads=0 runqueue=0 [2]
+     SCHED 11ms: gomaxprocs=4 idleprocs=0 threads=5 spinningthreads=0 idlethreads=0 runqueue=2933 [159 128 125 128]
+     SCHED 29ms: gomaxprocs=4 idleprocs=0 threads=5 spinningthreads=0 idlethreads=0 runqueue=2933 [128 126 108 109]
+
+- gomaxprocs : nombre de processeurs logiques utilisés
+- idleprocs : nombre de processus en attente
+
+- threads : threads de l'OS utilisés par le runtime (1 pour le processeur go)
+- spinningthreads : 
+- idlethreads : threads inoccupés
+
+- runqueue : nombre de goroutines en file d'attente globale
+- [nombre de goroutines par file d'attente locale]
+
 * Un tour de Go en 5 slides
 
 * Cf Wikipedia
@@ -115,11 +149,9 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 * Du code
 
-.play goroutine.go /^func main/,/^}/
+.play code/goroutine.go /^func main/,/^}/
 
 * Threads et goroutines
-
-
 
 * 10' live coding
 
