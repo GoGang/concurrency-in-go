@@ -24,13 +24,13 @@ Deux développeurs bordelais,
 
 * Moore or not Moore
 
-.image moore.jpg _ 500
+.image images/moore.jpg _ 500
 
 * Ok, et alors ?
 
-.image thread.jpg _ 300
+.image images/thread.jpg _ 300
 
-.image monkey.jpg _ 200
+.image images/monkey.jpg _ 200
 
 * La concurrence, c'est pas du parallélisme
 
@@ -44,19 +44,19 @@ Deux développeurs bordelais,
 
 - Non concurrent, non parallèle
 
-.image concurrence1.png _ 700
+.image images/concurrence1.png _ 700
 
 * Exemple : Indexation des titres de pages wikipedia en
 
 - Concurrent ? Parallèle ?
 
-.image concurrence2.png _ 900
+.image images/concurrence2.png _ 900
 
 * Exemple : Indexation des titres de pages wikipedia en
 
 - Concurrent ? Parallèle ?
 
-.image concurrence3.png _ 800
+.image images/concurrence3.png _ 800
 
 * Conception concurrente
 
@@ -69,11 +69,11 @@ Deux développeurs bordelais,
 
 * Thread et locks
 
-.image sharedmemory.png _ 800
+.image images/sharedmemory.png _ 800
 
 * Passage de message
 
-.image messagepassing.png _ 800
+.image images/messagepassing.png _ 800
 
 Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
@@ -110,12 +110,16 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 * Du code
 
-.code -edit -numbers goroutine.go /^func producer/,/^}/
-.code -edit -numbers goroutine.go /^func consumer/,/^}/
+.code -edit -numbers code/goroutine.go /^func producer/,/^}/
+.code -edit -numbers code/goroutine.go /^func consumer/,/^}/
 
 * Du code
 
 .play goroutine.go /^func main/,/^}/
+
+* Threads et goroutines
+
+
 
 * 10' live coding
 
@@ -123,12 +127,12 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 Comment indexer le contenu de Wikipedia avec 30 lignes de code ?
 
-.image mapreduce.png _ 700
+.image images/mapreduce.png _ 700
 
 * Références
 
-.image book1.jpg _ 200
-.image book2.jpg _ 200
+.image images/book1.jpg _ 200
+.image images/book2.jpg _ 200
 
 * Questions ?
 

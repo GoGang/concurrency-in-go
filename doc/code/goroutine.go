@@ -3,9 +3,11 @@ package main
 import "time"
 
 func producer(c chan int) {
+	i := 0
 	for {
-		c <- 1
-		print(".")
+		c <- i
+		i++
+		time.Sleep(time.Millisecond)
 	}
 }
 
