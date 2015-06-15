@@ -6,7 +6,7 @@ import (
 	"sync"
 )
 
-const n = 10000
+const n = 10
 
 var cores = flag.Int("cores", 3, "nombre de cœurs")
 
@@ -18,7 +18,7 @@ func main() {
 	for i := 0; i < n; i++ {
 		go func() {
 			a := 0
-			for j := 0; j < 1000000; j++ {
+			for j := 0; j < 10e8; j++ {
 				a++
 			}
 			wg.Done()
