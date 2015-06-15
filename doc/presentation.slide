@@ -69,13 +69,86 @@ Deux développeurs bordelais,
 
 * Thread et locks
 
+- le modèle habituel
+
 .image images/sharedmemory.png _ 800
 
+* Thread et locks : avantages/inconvénients
+
+- + Analogue au fonctionnement de la machine
+
+- - Identification des points de synchronisation difficile
+- - Difficilement testable, débuggage chronophage
+- - "Saupoudrage" de la concurrence sur le design métier
+- - Pilotage de la contention
+
 * Passage de message
+
+- Communicating Sequential Process (Hoare, 1978)
 
 .image images/messagepassing.png _ 800
 
 Patterns : Pipelines, fan in/out, timeout, pub/sub,…
+
+* Passage de message : avantages/inconvénients
+
+- + Concurrence paradigme du langage
+- + Patterns de conception connus
+- + Métier == concurrence
+- + Testable
+- + Outillage dédié
+
+- - On perd de vue le fonctionnement de la machine
+
+* Passage de message : quelques patterns
+
+- Fan in/Fan out
+- Active Object/Monitor Object
+- Programmation par évènements
+- Message queuing
+- Publication/Subscription
+
+- patterns spécifiques au langage (quit channel, pools de channels, ...)
+
+* Un tour de Go en 5 slides
+
+* Cf Wikipedia
+
+- V1.0 sortie en mars 2012
+- Créé par R.Pike, K.Thompson, R. Griesemer
+- Procédural, un peu objet, un peu fonctionnel
+- Garbage collecté
+- Compilé
+- Typage fort, statique
+- Orienté concurrence
+- Open source
+
+* Les channels
+
+- Primitive du langage 
+- File FIFO
+- Assure la communication inter process
+- `select` permet de "poller" plusieurs channels
+
+* Les goroutines
+
+- Exécution d'un appel de fonction dans un processus dédié
+- Mot clé `go`
+- Primitive du langage
+- Faible occupation mémoire (~4ko/goroutine)
+- Task switching peu significatif
+- Multiplexé sur un ou plusieurs threads de l'OS
+
+* Du code
+
+.code -edit -numbers code/goroutine.go /^func producer/,/^}/
+.code -edit -numbers code/goroutine.go /^func consumer/,/^}/
+
+* Du code
+
+.play code/goroutine.go /^func main/,/^}/
+
+* Scheduling
 
 * Cœurs et goroutines
 
@@ -84,6 +157,7 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 * Cœurs et goroutines
 
 .image images/gomodel2.png _ 450
+
 
 * Cœurs et goroutines
 
@@ -111,48 +185,6 @@ go build schedule.go && GODEBUG=schedtrace=10 ./schedule -cores 4
 - runqueue : nombre de goroutines en file d'attente globale
 - [nombre de goroutines par file d'attente locale]
 
-* Un tour de Go en 5 slides
-
-* Cf Wikipedia
-
-- V1.0 sortie en mars 2012
-- Créé par R.Pike, K.Thompson, R. Griesemer
-- Procédural, un peu objet, un peu fonctionnel
-- Garbage collecté
-- Compilé
-- Typage fort, statique
-- Orienté concurrence
-- Open source
-
-* Les channels
-
-- "Network"
-- Primitive du langage 
-- File FIFO
-- Assure la communication inter process
-- `select` permet de "poller" plusieurs channels
-
-* Les goroutines
-
-- "Processor"
-- Exécution d'un appel de fonction dans un processus dédié
-- Mot clé `go`
-- Primitive du langage
-- Faible occupation mémoire (~4ko/goroutine)
-- Task switching peu significatif
-- Multiplexé sur un ou plusieurs threads de l'OS
-
-* Du code
-
-.code -edit -numbers code/goroutine.go /^func producer/,/^}/
-.code -edit -numbers code/goroutine.go /^func consumer/,/^}/
-
-* Du code
-
-.play code/goroutine.go /^func main/,/^}/
-
-* Threads et goroutines
-
 * 10' live coding
 
 * MapReduce
@@ -170,9 +202,4 @@ Comment indexer le contenu de Wikipedia avec 30 lignes de code ?
 
 * Pour les timides
 
-- Twitter : @TheBenC_ , @morphocapics
-- Gmail : benjamin.chenebault@gmail.com, jacquesantoine.masse@gmail.com 
 - Retour d'expérience sur Go : https://github.com/GoGang/RetourDExperience
-
-
-
