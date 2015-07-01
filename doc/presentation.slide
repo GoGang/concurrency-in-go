@@ -1,17 +1,19 @@
 Concurrency in Go
-28 Mai 2015
+7th July 2015
 
 Benjamin Chenebault & Jacques Antoine Massé
 Orange Applications for Business
 
 * Sommaire
 
-- Quelques mots
-- La concurrence c'est pas du parallélisme
-- Golang en 5 slides (à peine)
-- 10' Live coding
+- De Java vers Go
+- La concurrence, le paradigme du XXIe siècle
+- La concurrence et le parallélisme
+- Golang en 10 slides (à peine)
+- 20' Live coding
 
-* Quelques mots
+
+* De Java vers Go
 
 * Qui sommes nous ?
 
@@ -21,6 +23,42 @@ Deux développeurs bordelais,
 - Spécialisés dans la conception de plateformes haute disponibilité,
 - Noyés dans des problématiques de programmation concurrente,
 - Et bercés au quotidien dans des problémes de flux réseau... 
+
+* Quel est notre environnement ?
+
+.image images/xms.jpg _ 700
+
+- ~ 30 applis en production
+- Langages Java, C & Python
+- 6 dev, 3 ops
+- Plusieurs centaines de clients
+- 900 millions de sms/an
+
+* D'où cet intérêt à Golang ?
+
+.image images/sgsenabler.jpg _ 700
+
+- Principal module d'accès à la plate-forme
+- Maintenance très coûteuse et complexe
+- Décision de réécriture complète
+- Critères de choix : développement et maintenance simple, performance au runtime, consommations CPU et mémoire faibles
+
+* Etude comparative
+
+2 POCs équivalents réalisés en Java et en Go incluant :
+serveur HTTP, analyseur de trames, routeur & loadbalancer
+
+*Résultats*
+
+- Temps moyen par requête 10 fois plus faible en Go qu'en Java en charge
+- Résultats de tests d'endurance sur serveur de PRP 
+ Java : 94% CPU, 8.5% RAM
+ Go : 2% CPU, 1.2% RAM
+- Résultat de tests aux limites sur serveur de PRP 
+ Java : 139 req./s 
+ Go : 254 req./s
+
+* La concurrence, le paradigme du XXIe siècle
 
 * Moore or not Moore
 
@@ -40,49 +78,53 @@ Deux développeurs bordelais,
 
 - Parallélisme : Exécution de processus simultanés. C'est une question d'architecture de machine, sur une machine monocoeur, on peut pas paralléliser.
 
-* Exemple : Indexation des titres de pages wikipedia en
+* Exemple : Indexation des titres de pages wikipedia
 
-- Non concurrent, non parallèle
+Système non concurrent, non parallèle
 
 .image images/concurrence1.png _ 700
 
-* Exemple : Indexation des titres de pages wikipedia en
+* Exemple : Indexation des titres de pages wikipedia
 
-- Concurrent ? Parallèle ?
+Système concurrent non parallèle
 
 .image images/concurrence2.png _ 900
 
-* Exemple : Indexation des titres de pages wikipedia en
+* Exemple : Indexation des titres de pages wikipedia
 
-- Concurrent ? Parallèle ?
+Système concurrent et parallèle
 
 .image images/concurrence3.png _ 800
 
-* Conception concurrente
+* La conception concurrente
 
-- Paradigme de programmation
+- C'est un paradigme de programmation
 - Consiste à décomposer un système complexe en sous-systèmes plus simples
 - On ne parle pas d'objets, ni de fonctions, ni de procédures, mais de processus
 
 - Ces sous-systèmes peuvent fonctionner en concurrence…
 - … et potentiellement en parallèle
 
-* Thread et locks
+* Thread, locks et passage de messages
 
-- le modèle habituel
+* Thread et locks, le modèle habituel
 
 .image images/sharedmemory.png _ 800
 
-* Thread et locks : avantages/inconvénients
+* Thread et locks, le modèle habituel
 
-- + Analogue au fonctionnement de la machine
+*Avantages*
 
-- - Identification des points de synchronisation difficile
-- - Difficilement testable, débuggage chronophage
-- - "Saupoudrage" de la concurrence sur le design métier
-- - Pilotage de la contention
++ Analogue au fonctionnement de la machine
 
-* Passage de message
+*Inconvénients*
+
+- Identification des points de synchronisation difficile
+- Difficilement testable, débuggage chronophage
+- "Saupoudrage" de la concurrence sur le design métier
+- Pilotage de la contention
+
+* Le modèle par passage de message
 
 - Communicating Sequential Process (Hoare, 1978)
 
@@ -90,17 +132,23 @@ Deux développeurs bordelais,
 
 Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
-* Passage de message : avantages/inconvénients
+* Le modèle par passage de message
 
-- + Concurrence paradigme du langage
-- + Patterns de conception connus
-- + Métier == concurrence
-- + Testable
-- + Outillage dédié
+*Avantages*
 
-- - On perd de vue le fonctionnement de la machine
++ Concurrence paradigme du langage
++ Patterns de conception connus
++ Métier == concurrence
++ Testable
++ Outillage dédié
 
-* Passage de message : quelques patterns
+*Inconvénients*
+
+- On perd de vue le fonctionnement de la machine
+
+* Le modèle par passage de message
+
+*Quelques* *patterns*
 
 - Fan in/Fan out
 - Active Object/Monitor Object
@@ -108,9 +156,10 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 - Message queuing
 - Publication/Subscription
 
-- patterns spécifiques au langage (quit channel, pools de channels, ...)
 
-* Un tour de Go en 5 slides
+- Patterns spécifiques au langage (quit channel, pools de channels, ...)
+
+* Un tour de Go en 10 slides
 
 * Cf Wikipedia
 
@@ -185,13 +234,13 @@ go build schedule.go && GODEBUG=schedtrace=10 ./schedule -cores 4
 - runqueue : nombre de goroutines en file d'attente globale
 - [nombre de goroutines par file d'attente locale]
 
-* 10' live coding
+* 20' live coding
 
 * MapReduce
 
-Comment indexer le contenu de Wikipedia avec 30 lignes de code ?
+*Objectif:* Indexer le contenu de Wikipedia
 
-.image images/mapreduce.png _ 700
+.image images/mapreduce.jpg _ 700
 
 * Références
 
