@@ -159,7 +159,7 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 - Patterns spécifiques au langage (quit channel, pools de channels, ...)
 
-* Un tour de Go en 10 slides
+* Un tour de Go en 5 slides
 
 * Cf Wikipedia
 
