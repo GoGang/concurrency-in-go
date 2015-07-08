@@ -7,12 +7,12 @@ func producer(c chan int) {
 	for {
 		c <- i
 		i++
-		time.Sleep(time.Millisecond)
+		time.Sleep(time.Nanosecond)
 	}
 }
 
 func consumer(c chan int) {
-	ticker := time.Tick(time.Millisecond)
+	ticker := time.Tick(time.Second)
 	result := 0
 	for {
 		select {
@@ -30,5 +30,4 @@ func main() {
 	ones := make(chan int)
 	go consumer(ones)
 	producer(ones)
-	time.Sleep(2 * time.Millisecond)
 }

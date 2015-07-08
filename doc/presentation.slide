@@ -195,7 +195,7 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 * Du code
 
-.play code/goroutine.go /^func main/,/^}/
+.code code/goroutine.go /^func main/,/^}/
 
 * Scheduling
 
@@ -214,21 +214,24 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 * Traçage du scheduler 
 
-.code code/schedule.go /^const/,/^}/
+.play code/schedule.go /^var/,/^}/
 
 go build schedule.go && GODEBUG=schedtrace=10 ./schedule -cores 4
 
 * Traçage du scheduler 
 
-     SCHED 0ms: gomaxprocs=1 idleprocs=0 threads=2 spinningthreads=0 idlethreads=0 runqueue=0 [2]
-     SCHED 11ms: gomaxprocs=4 idleprocs=0 threads=5 spinningthreads=0 idlethreads=0 runqueue=2933 [159 128 125 128]
-     SCHED 29ms: gomaxprocs=4 idleprocs=0 threads=5 spinningthreads=0 idlethreads=0 runqueue=2933 [128 126 108 109]
+     SCHED 0ms: gomaxprocs=1 idleprocs=0 threads=2 spinningthreads=0 idlethreads=0 runqueue=0 \
+     											[2]
+     SCHED 11ms: gomaxprocs=4 idleprocs=0 threads=5 spinningthreads=0 idlethreads=0 runqueue=2933 \
+     											[159 128 125 128]
+     SCHED 29ms: gomaxprocs=4 idleprocs=0 threads=5 spinningthreads=0 idlethreads=0 runqueue=2933 \
+     											[128 126 108 109]
 
 - gomaxprocs : nombre de processeurs logiques utilisés
 - idleprocs : nombre de processus en attente
 
 - threads : threads de l'OS utilisés par le runtime (1 pour le processeur go)
-- spinningthreads : 
+- spinningthreads : threads en écoute active 
 - idlethreads : threads inoccupés
 
 - runqueue : nombre de goroutines en file d'attente globale
