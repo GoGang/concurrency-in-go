@@ -150,7 +150,7 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 *Quelques* *patterns*
 
-- Fan in/Fan out_M
+- Fan in/Fan out
 - Active Object/Monitor Object
 - Programmation par évènements
 - Message queuing
