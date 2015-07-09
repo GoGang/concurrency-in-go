@@ -150,7 +150,7 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 *Quelques* *patterns*
 
-- Fan in/Fan out
+- Fan in/Fan out_M
 - Active Object/Monitor Object
 - Programmation par évènements
 - Message queuing
@@ -201,15 +201,19 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 * Cœurs et goroutines
 
-.image images/gomodel.png _ 600
+.image images/sched1.jpg _ 650
 
 * Cœurs et goroutines - Work Stealing
 
-.image images/gomodel2.png _ 450
+.image images/sched2.jpg _ 600
 
 * Cœurs et goroutines - Work Stealing
 
-.image images/gomodel3.png _ 700
+.image images/sched3.jpg _ 650
+
+* Cœurs et goroutines - Work Stealing
+
+.image images/sched4.jpg _ 500
 
 * Traçage du scheduler 
 
