@@ -203,7 +203,7 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 .image images/sched1.jpg _ 650
 
-* Cœurs et goroutines - Work Stealing
+* Cœurs et goroutines
 
 .image images/sched2.jpg _ 600
 
