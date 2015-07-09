@@ -86,13 +86,13 @@ Système non concurrent, non parallèle
 
 * Exemple : Indexation des titres de pages wikipedia
 
-Système concurrent non parallèle
+Système (peut-être) concurrent, non parallèle
 
 .image images/concurrence2.png _ 900
 
 * Exemple : Indexation des titres de pages wikipedia
 
-Système concurrent et parallèle
+Système concurrent et (peut-être) parallèle
 
 .image images/concurrence3.png _ 800
 
@@ -105,7 +105,7 @@ Système concurrent et parallèle
 - Ces sous-systèmes peuvent fonctionner en concurrence…
 - … et potentiellement en parallèle
 
-* Thread, locks et passage de messages
+* Modèle de concurrence
 
 * Thread et locks, le modèle habituel
 
@@ -139,7 +139,7 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 + Concurrence paradigme du langage
 + Patterns de conception connus
 + Métier == concurrence
-+ Testable
++ Plus Testable
 + Outillage dédié
 
 *Inconvénients*
@@ -203,12 +203,11 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 .image images/gomodel.png _ 600
 
-* Cœurs et goroutines
+* Cœurs et goroutines - Work Stealing
 
 .image images/gomodel2.png _ 450
 
-
-* Cœurs et goroutines
+* Cœurs et goroutines - Work Stealing
 
 .image images/gomodel3.png _ 700
 
@@ -216,7 +215,7 @@ Patterns : Pipelines, fan in/out, timeout, pub/sub,…
 
 .play code/schedule.go /^var/,/^}/
 
-go build schedule.go && GODEBUG=schedtrace=10 ./schedule -cores 4
+go build schedule.go && GODEBUG=schedtrace=10;scheddetail=1 ./schedule -cores 4 -n 10
 
 * Traçage du scheduler 
 
